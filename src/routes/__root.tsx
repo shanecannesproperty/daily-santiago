@@ -237,6 +237,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: siteName() },
       { property: "og:locale", content: cityBcp47().replace("-", "_") },
       { name: "twitter:card", content: "summary_large_image" },
+      // Per-city default share card (SVG hosted at /og/default.svg).
+      // Leaf routes override these via buildMeta() with article-specific images.
+      { property: "og:image", content: `${siteDomain()}/og/default.svg` },
+      { property: "og:image:type", content: "image/svg+xml" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: `${siteName()} — ${siteTagline()}` },
+      { name: "twitter:image", content: `${siteDomain()}/og/default.svg` },
       { name: "google-site-verification", content: "zIjVnZiEpcBUcYhqSwiusu_VJQP6CEFTDNjNhsU61fk" },
       { name: "google-site-verification", content: "n7ukK9Rhbx3oa3CKUzGkGQVZEatKGmfsxYvWLnGO29A" },
       { name: "mobile-web-app-capable", content: "yes" },
