@@ -43,7 +43,7 @@ import { CategoryNav } from "@/components/CategoryNav";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMeta, canonicalLinks, absUrl, pageTitle, clampDescription } from "@/lib/seo";
 import { homepageMode } from "@/lib/homepage-mode";
-import { cityName, siteName, siteTagline, siteDomain, citySocialLinks } from "@/lib/city";
+import { cityName, siteName, siteTagline, siteDomain, citySocialLinks, isCityAustralian} from "@/lib/city";
 
 const homepageQuery = queryOptions({
   queryKey: ["homepage"],
@@ -374,7 +374,7 @@ function Home() {
 
         <RecentJudgments judgments={judgments} limit={4} />
 
-        <AcrossAustralia articles={national ?? []} />
+        {isCityAustralian() && <AcrossAustralia articles={national ?? []} />}
 
         <FeaturedDevelopment placements={featuredDevelopment ?? []} />
 
