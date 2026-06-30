@@ -72,6 +72,23 @@ const REGION_TO_BCP47: Record<string, string> = {
   US:  "en-US", CA:  "en-CA",
   IN:  "en-IN", PH:  "en-PH", MY:  "en-MY",
   ZA:  "en-ZA", NG:  "en-NG", KE:  "en-KE",
+  JP:  "ja-JP",
+  CN:  "zh-CN",
+  FR:  "fr-FR",
+  DE:  "de-DE",
+  ES:  "es-ES",
+  IT:  "it-IT",
+  NL:  "nl-NL",
+  PT:  "pt-BR",
+  TR:  "tr-TR",
+  TH:  "th-TH",
+  ID:  "id-ID",
+  VN:  "vi-VN",
+  AE:  "ar-AE",
+  CL:  "es-CL",
+  MX:  "es-MX",
+  BR:  "pt-BR",
+  CH:  "de-CH",
 };
 
 export function slugToBcp47(slug: string): string {
