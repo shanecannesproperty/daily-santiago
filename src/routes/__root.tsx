@@ -39,7 +39,7 @@ import { ReadCountNudge } from "../components/ReadCountNudge";
 
 
 import { StickyNewsletterBar } from "../components/StickyNewsletterBar";
-import { AskCanberraLauncher } from "../components/AskCanberraLauncher";
+import { AskSantiagoLauncher } from "../components/AskSantiagoLauncher";
 import { PageViewTracker } from "../components/PageViewTracker";
 import { EnvPreflightBanner } from "../components/EnvPreflightBanner";
 import { BreakingNewsBanner } from "../components/BreakingNewsBanner";
@@ -341,7 +341,7 @@ function RootComponent() {
       <ExitIntentPopup />
       <PushNotifyPrompt />
       <StickyNewsletterBar />
-      <AskCanberraLauncher />
+      <AskSantiagoLauncher />
       <CookieConsent />
       <ReadCountNudge />
 
