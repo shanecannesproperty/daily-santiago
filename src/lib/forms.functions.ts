@@ -118,7 +118,7 @@ export const subscribeNewsletter = createServerFn({ method: "POST" })
           action: "subscribe",
           email: data.email,
           city: citySlug(),
-          send_welcome_email: true,
+          send_welcome_email: false,
         },
       })
       .catch((e: unknown) => console.error("[subscribe] beehiiv-sync error", e));
@@ -167,6 +167,34 @@ export const subscribeNewsletter = createServerFn({ method: "POST" })
       /* non-blocking */
     }
 
+        // Fire-and-forget welcome email via Resend (send-welcome-email), branded
+    // per-city, with the subscriber's own referral link embedded. Beehiiv
+    // sync above is left running for list sync but no longer sends the
+    // welcome email itself (send_welcome_email: false) to avoid duplicates.
+    try {
+      const supabaseUrl = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
+      const supabaseAnonKey =
+        process.env.SUPABASE_PUBLISHABLE_KEY ??
+        process.env.SUPABASE_ANON_KEY ??
+        process.env.VITE_SUPABASE_PUBLISHABLE_KEY ??
+        process.env.VITE_SUPABASE_ANON_KEY;
+      if (supabaseUrl && supabaseAnonKey) {
+        void fetch(`${supabaseUrl}/functions/v1/send-welcome-email`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${supabaseAnonKey}`,
+          },
+          body: JSON.stringify({
+            email: data.email,
+            city: citySlug(),
+            referral_code: referralCode,
+          }),
+        }).catch((e: unknown) => console.error("[subscribe] send-welcome-email error", e));
+      }
+    } catch (e) {
+      console.error("[subscribe] send-welcome-email dispatch failed", e);
+    }
     return { ok: true as const, referralCode };
 
   });
