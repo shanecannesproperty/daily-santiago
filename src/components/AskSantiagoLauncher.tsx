@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { cityName } from "@/lib/city";
-import { AskCanberraChat } from "./AskCanberraChat";
+import { AskSantiagoChat } from "./AskSantiagoChat";
 
-export function AskCanberraLauncher() {
+export function AskSantiagoLauncher() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -52,7 +52,7 @@ export function AskCanberraLauncher() {
               </button>
             </div>
             <div className="flex-1 min-h-0">
-              <AskCanberraChat embedded />
+              <AskSantiagoChat embedded />
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ function suggestions(): string[] {
   ];
 }
 
-export function AskCanberraChat({ embedded = false }: { embedded?: boolean }) {
+export function AskSantiagoChat({ embedded = false }: { embedded?: boolean }) {
   const [initial] = useState<UIMessage[]>(() => loadStored());
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement | null>(null);

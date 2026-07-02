@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
-import { AskCanberraChat } from "@/components/AskCanberraChat";
+import { AskSantiagoChat } from "@/components/AskSantiagoChat";
 import { buildMeta, canonicalLinks } from "@/lib/seo";
 import { cityName, siteName } from "@/lib/city";
 
@@ -25,7 +25,7 @@ function AskPage() {
         <nav className="meta mb-4">
           <a href="/">Home</a> / Ask {cityName()}
         </nav>
-        <AskCanberraChat />
+        <AskSantiagoChat />
       </main>
     </>
   );
